@@ -3,19 +3,21 @@ def solution(maps):
     visited = [[[0 for _ in range(2)] for _ in range(col)] for _ in range(row)]
     
     queue = []
-    y = [-1,1,0,0]
-    x = [0,0,-1,1]
+    y = [-1,1,0,0] #y축 이동
+    x = [0,0,-1,1] #x축 이동
     end_y,end_x = -1,-1
+
     for i in range(row):
         for j in range(col):
             if maps[i][j] == "S":
-                queue.append((i,j,0,0))
+                queue.append((i,j,0,0)) #i가 세로 줄, j가 가로줄
                 visited[i][j][0] = 1
             if maps[i][j] == "E":
                 end_y,end_x = i,j
 
+    #괜히 i,j를 j,i로 바꿔서 헷갈림 그냥 i,j로 하는게 날듯
     while queue:
-        j,i,k,l = queue.pop(0)
+        j,i,k,l = queue.pop(0) #j:행, i:열
         if j == end_y and i == end_x and l == 1:
             return k
 
